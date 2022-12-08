@@ -192,4 +192,62 @@ module.exports = {
       connection.release();
     });
   },
+
+  //login
+  // login(req, res) {
+  //   let email = req.body.email;
+  //   let password = req.body.password;
+  //   //print email
+  //   console.log(email);
+  //   //print password
+  //   console.log(password);
+  //   pool.getConnection(function (err, connection) {
+  //     if (err) throw err;
+  //     connection.query(
+  //       `
+  //       SELECT * FROM user WHERE email = ? AND password = ?;
+  //       `,
+  //       [email, password],
+  //       function (error, results) {
+  //         if (error) throw error;
+  //         //print results
+  //         console.log(results);
+  //         res.send({
+  //           success: true,
+  //           message: "Berhasil ambil data!",
+  //           data: results,
+  //         });
+  //       }
+  //     );
+  //     connection.release();
+  //   });
+  // },
+  login(req, res) {
+    let email = req.body.email;
+    let password = req.body.password;
+    //print email
+    console.log(email);
+    //print password
+    console.log(password);
+    pool.getConnection(function (err, connection) {
+      if (err) throw err;
+      connection.query(
+        `
+          SELECT * FROM user;
+          `,
+        [email, password],
+        function (error, results) {
+          if (error) throw error;
+          //print results
+          console.log(results);
+          res.send({
+            success: true,
+            message: "Berhasil ambil data!",
+            data: results,
+          });
+        }
+      );
+      connection.release();
+    });
+  },
 };

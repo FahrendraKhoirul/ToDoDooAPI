@@ -6,6 +6,7 @@ const {
   addTask,
   editTask,
   deleteTask,
+  login,
 } = require("./controller-task");
 
 router.get("/", (req, res) => {
@@ -29,5 +30,7 @@ router.post("/task/edit", editTask);
 
 // POST localhost:8080/karyawan/delete => Delete data karyawan
 router.post("/task/delete", deleteTask);
+
+router.get("/login", login);
 
 module.exports = router;
